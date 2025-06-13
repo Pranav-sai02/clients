@@ -1,0 +1,65 @@
+
+
+* {
+  font-family: Arial;
+}
+.ag-header-cell {
+  background-color: #05b9bc !important;
+  color: white !important;
+}
+
+.bold-header {
+  font-weight: bold;
+}
+
+/* styles.css (global styles) */
+.ag-theme-alpine .ag-header-cell-label {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.ag-header-cell-menu-button {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.fa {
+  font-family: FontAwesome !important;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+.ag-cell.hint-text {
+  color: #999 !important;
+  font-style: italic !important;
+}
+ 
+/* 👇 While editing, reset text color and font style */
+.ag-cell.ag-cell-edit-mode {
+  color: #000 !important;
+  font-style: normal !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.error-snackbar {
+  background-color: #e74c3c; /* red - error */
+  color: white;
+}
+
+.success-snackbar {
+  background-color: #2ecc71; /* green - success */
+  color: white;
+}
+
+/* styles.css */
+/* .toast-success {
+  background-color: #2ecc71 !important;
+  color: #fff;
+}
+.toast-error {
+  background-color: #e74c3c !important;
+  color: #fff;
+} */
+
+

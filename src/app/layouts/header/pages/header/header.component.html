@@ -1,0 +1,29 @@
+<div class="topbar">
+  <div class="date-box">
+    {{ currentDateOnly }}
+  </div>
+
+  <div class="topbar-right">
+    <div class="last-login">
+      Last Login Date:
+      {{ currentDateTime | date : "EEE, MMM dd, y, hh:mm:ss a" }}
+    </div>
+
+    <div class="user-container">
+      <div class="user-details">
+        <img class="avatar" src="assets/icons/profilepic.png" alt="User" />
+        <div class="welcome-text">
+          <span class="welcome-label">Welcome,</span>
+          <strong>Admin Admin</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Font Awesome Classic Logout Icon -->
+    <div class="logout-icon" (click)="confirmLogout($event)">
+      <i class="fas fa-sign-out-alt" title="Logout"></i>
+    </div>
+  </div>
+</div>
+
+<app-breadcrumb></app-breadcrumb>

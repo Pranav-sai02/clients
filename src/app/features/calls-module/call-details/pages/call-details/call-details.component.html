@@ -1,0 +1,63 @@
+<mat-stepper [linear]="true" #stepper [(selectedIndex)]="activeIndex">
+  <mat-step [completed]="completedSteps[0]">
+    <ng-template matStepLabel> <b>Case Initiation</b><br /> </ng-template>
+  </mat-step>
+
+  <mat-step [completed]="completedSteps[1]">
+    <ng-template matStepLabel> <b>Evaluation</b><br /> </ng-template>
+  </mat-step>
+
+  <mat-step [completed]="completedSteps[2]">
+    <ng-template matStepLabel> <b>Ongoing</b><br /> </ng-template>
+  </mat-step>
+
+  <mat-step [completed]="completedSteps[3]">
+    <ng-template matStepLabel> <b>On Hold</b><br /> </ng-template>
+  </mat-step>
+
+  <mat-step [completed]="completedSteps[4]">
+    <ng-template matStepLabel> <b>Resolution</b><br /> </ng-template>
+  </mat-step>
+</mat-stepper>
+
+<!-- call-details-component.html -->
+
+<div class="caller-container">
+  <div class="call-ref">
+    <p>
+      Case Ref Number: {{ caseRef || "N/A" }}
+      <span class="status">(Closed)</span>
+    </p>
+    <div>
+      <button>Contact History</button>
+      <button>About</button>
+      <button>Exit</button>
+      <button>SMS</button>
+      <button>Send Email</button>
+    </div>
+  </div>
+
+  <div class="tabs-wrapper">
+  <ul class="tab-header">
+    <li
+      *ngFor="let tab of tabs; let i = index"
+      [class.active]="selectedTab === i"
+      (click)="selectTab(i)"
+    >
+      {{ tab.label }}
+    </li>
+  </ul>
+
+  <div class="green-strip"></div>
+
+  <div class="tab-body">
+    <ng-container [ngSwitch]="selectedTab">
+      <app-caller-details *ngSwitchCase="0"></app-caller-details>
+      <app-validation *ngSwitchCase="1"></app-validation>
+      <app-voucher-sms *ngSwitchCase="2"></app-voucher-sms>
+      <app-complaints *ngSwitchCase="3"></app-complaints>
+      <app-documents *ngSwitchCase="4"></app-documents>
+    </ng-container>
+  </div>
+</div>
+</div>

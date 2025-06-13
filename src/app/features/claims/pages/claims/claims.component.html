@@ -1,0 +1,19 @@
+<div style="display: flex; justify-content: flex-end; margin-bottom: 4px">
+  <button class="export-btn" (click)="onExport()">
+    <i class="fas fa-download"></i> Export
+  </button>
+</div>
+<div class="table-container">
+  <ag-grid-angular
+    #agGrid
+    style="width: 100%"
+    class="ag-theme-alpine"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    [domLayout]="'autoHeight'"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</div>

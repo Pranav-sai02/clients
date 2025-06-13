@@ -1,0 +1,73 @@
+<div class="upload-container">
+  <!-- Upload File Section -->
+ <div class="upload-box">
+  <div class="upload-left">
+    <label class="upload-label">Upload a File:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+  <button class="save-btn" (click)="onUpload()">
+    <i class="fa fa-plus-circle"></i> <span>Save Document</span>
+  </button>
+</div>
+ 
+  <!-- Table Display Section -->
+  <div class="table-wrapper">
+    <div class="table-header">
+      <button class="print-btn" (click)="printPage()">
+        <i class="fa fa-print"></i> Print
+      </button>
+    </div>
+ 
+    <table>
+      <thead>
+        <tr>
+          <th>
+            File Name
+            <span class="sort-icons"> ↑↓ </span>
+          </th>
+          <th>
+            Uploaded Date Time
+            <span class="sort-icons"> ↑↓ </span>
+          </th>
+          <th>
+            <span class="sort-icons"> ↑↓ </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of pagedFiles">
+          <td>{{ file.file.name }}</td>
+          <td>{{ file.uploadedAt | date:'M/d/yyyy h:mm:ss a' }}</td>
+          <td class="icon-cell">
+            <button (click)="downloadFile(file)">
+              <i class="fa fa-download download-icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ 
+    <!-- Pagination & Entry Info -->
+    <div class="table-footer">
+      <div class="left">
+        Show
+        <select [(ngModel)]="pageSize" (change)="resetPagination()">
+          <option *ngFor="let size of [10, 25, 50, 100]" [value]="size">{{ size }}</option>
+        </select>
+        entries
+      </div>
+      <div class="center">
+        Showing {{ getStartIndex() + 1 }} to {{ getEndIndex() }} of {{ uploadedFiles.length }} entries
+      </div>
+      <div class="right">
+        <button (click)="previousPage()" [disabled]="currentPage === 0">
+          <i class="fa fa-angle-double-left"></i>
+        </button>
+        <span>{{ currentPage + 1 }}</span>
+        <button (click)="nextPage()" [disabled]="getEndIndex() >= uploadedFiles.length">
+          <i class="fa fa-angle-double-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

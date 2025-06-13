@@ -1,0 +1,55 @@
+<div class="modal-backdrop">
+  <div class="modal-content fullscreen">
+    <h2 class="modal-title"><i class="fas fa-edit"></i>  Add Service</h2>
+    <button class="close-btn" type="button" (click)="onClose()">&times;</button>
+
+    <form [formGroup]="areaForm" (ngSubmit)="onSubmit()" class="form-container">
+
+      <!-- Row 1 -->
+      <div class="form-row">
+        <div class="form-field">
+          <label>Description <span class="required">*</span></label>
+          <input formControlName="Description" type="text" placeholder="Zimbabwe" />
+          <div class="error-msg" *ngIf="f['Description'].touched && f['Description'].invalid">
+            <small *ngIf="f['Description'].errors?.['required']">Description is required.</small>
+            <small *ngIf="f['Description'].errors?.['minlength']">Minimum 3 characters required.</small>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Service Type <span class="required">*</span></label>
+          <select formControlName="ServiceType">
+            <option value="">SELECT</option>
+            <option value="Added Value Services">Added Value Services</option>
+            <option value="Funerary Claim Only">Funerary Claim Only</option>
+            <option value="Funerary Inf">Funerary Inf</option>
+            <option value="Funerary Management">Funerary Management</option>
+          </select>
+          <div class="error-msg" *ngIf="f['ServiceType'].touched && f['ServiceType'].invalid">
+            <small *ngIf="f['ServiceType'].errors?.['required']">Service Type is required.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Note Section -->
+      <label>Note <span class="required">*</span></label>
+      <p-editor formControlName="Note" [style]="{ height: '220px' }" [modules]="editorModules"></p-editor>
+      <div class="error-msg" *ngIf="f['Note'].touched && f['Note'].invalid">
+        <small *ngIf="f['Note'].errors?.['required']">Note is required.</small>
+      </div>
+
+      <!-- Checkbox Row -->
+      <div class="form-row checkbox-row">
+        <label><input type="checkbox" formControlName="EnforceMobileNumber" /> Enforce Cell Number?</label>
+        <label><input type="checkbox" formControlName="SendRefSMSEnabled" /> Send Reference Number</label>
+        <label><input type="checkbox" formControlName="IsActive" /> Is Active?</label>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="form-actions">
+        <button class="btn cancel-btn" type="button" (click)="onCancel()">Cancel</button>
+        <button class="btn submit-btn" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="sidebar">
+  <div class="logo">
+    <div class="logo-text">
+      <span class="fusion">Fusion</span><span class="edge">Edge</span>
+    </div>
+  </div>
+
+  <div class="sidebar_menu">
+    <!-- Top-level menu items (e.g., Home, Dashboard) -->
+    <div
+      class="menu-item"
+      *ngFor="let item of topLevelMenuItems"
+      [routerLink]="['/' + item.MenuViewName.toLowerCase()]"
+      routerLinkActive="active"
+    >
+      <img
+        class="icon-img"
+        [src]="'assets/icons/' + (item.Icon || 'default.png')"
+        [alt]="item.DisplayName + ' Icon'"
+      />
+      {{ item.DisplayName }}
+    </div>
+
+    <!-- Grouped menu items -->
+    <ng-container *ngFor="let section of groupedMenu | keyvalue">
+      <hr class="group-divider" />
+      <div class="section-title">{{ section.key }}</div>
+
+      <div
+        class="menu-item"
+        *ngFor="let item of section.value"
+        [routerLink]="['/' + item.MenuViewName.toLowerCase()]"
+        routerLinkActive="active"
+      >
+        <img
+          class="icon-img"
+          [src]="'assets/icons/' + (item.Icon || 'default.png')"
+          [alt]="item.DisplayName + ' Icon'"
+        />
+        {{ item.DisplayName }}
+      </div>
+    </ng-container>
+  </div>
+</div>

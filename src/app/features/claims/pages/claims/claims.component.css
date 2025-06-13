@@ -1,0 +1,41 @@
+.container {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.table-container {
+  overflow-x: auto;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.ag-theme-alpine {
+  font-size: 14px;
+}
+
+.ag-header-cell-label {
+  font-weight: bold;
+}
+
+.ag-center-cols-viewport {
+  min-height: unset !important;
+}
+
+.export-btn {
+  margin: 10px 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #05b9bc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 87px;
+  height: 40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.export-btn:hover {
+  background-color: #0056b3;
+}

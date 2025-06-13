@@ -1,0 +1,995 @@
+{
+  "servicesPage": [
+    {
+      "id": "1",
+      "description": "Cremation Ceremony Package",
+      "serviceType": "Cremation",
+      "voucherProvider": "Serenity Life Services",
+      "requireCell": true,
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "2",
+      "description": "Standard Burial Package",
+      "serviceType": "Burial",
+      "voucherProvider": "Peaceful Rest Providers",
+      "requireCell": false,
+      "isActive": false,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "3",
+      "description": "Family Transport Support",
+      "serviceType": "Logistics",
+      "voucherProvider": "Final Journey Logistics",
+      "requireCell": true,
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "4",
+      "description": "Memorial Event Planning",
+      "serviceType": "Planning",
+      "voucherProvider": "Legacy Memories Inc.",
+      "requireCell": false,
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "5",
+      "description": "Gravesite Maintenance Plan",
+      "serviceType": "Maintenance",
+      "voucherProvider": "Graceful Endings",
+      "requireCell": false,
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "6",
+      "description": "Post-Service Counseling",
+      "serviceType": "Support",
+      "voucherProvider": "Healing Hearts",
+      "requireCell": false,
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "7",
+      "description": "Religious Officiation Service",
+      "serviceType": "Ceremony",
+      "voucherProvider": "Faith & Peace Council",
+      "requireCell": true,
+      "isActive": false,
+      "view": "View",
+      "isDeleted": false
+    }
+  ],
+  "serviceProviders": [
+    {
+      "id": 1,
+      "Name": "Alpha Transports",
+      "VATNumber": "VAT123456",
+      "CompanyRegNo": "REG202345",
+      "Branch": "Cape Town",
+      "OfficeAddress": "123 Main St, Cape Town Central, 8001",
+      "StorageAddress": "Warehouse 5, Industrial Park, Cape Town",
+      "TownCity": "Cape Town",
+      "Province": "Western Cape",
+      "ServiceProviderServiceTypeId": 101,
+      "DesignationNumber": "D-001",
+      "RatePerKm": 12.5,
+      "RateAuthorisedOn": "2024-02-15",
+      "RateAuthorisedby": "John Doe",
+      "IsActive": true,
+      "IsActiveOn": "2024-02-16",
+      "IsActiveby": "Jane Smith",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-02-20",
+      "IsVerifiedby": "Auditor A",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-03-01",
+      "IsAccreditedby": "Cert Authority",
+      "ContactDetails": [
+        { "Type": "Email", "Value": "contact@alphatransports.co.za" },
+        { "Type": "Phone", "Value": "+27 21 123 4567" }
+      ]
+    },
+    {
+      "id": 2,
+      "Name": "Zeta Logistics",
+      "VATNumber": "VAT654321",
+      "CompanyRegNo": "REG654789",
+      "Branch": "Johannesburg",
+      "OfficeAddress": "45 Logistic Park, Midrand, Johannesburg",
+      "StorageAddress": "Unit 4, Central Storage, Johannesburg",
+      "TownCity": "Johannesburg",
+      "Province": "Gauteng",
+      "ServiceProviderServiceTypeId": 104,
+      "DesignationNumber": "D-002",
+      "RatePerKm": 14.2,
+      "RateAuthorisedOn": "2024-01-10",
+      "RateAuthorisedby": "Mark Henry",
+      "IsActive": true,
+      "IsActiveOn": "2024-01-12",
+      "IsActiveby": "Emily White",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-01-20",
+      "IsAccreditedby": "Cert Body",
+      "ContactDetails": [
+        { "Type": "Email", "Value": "support@zetalogistics.com" },
+        { "Type": "Phone", "Value": "+27 11 876 5432" }
+      ]
+    },
+    {
+      "id": 3,
+      "Name": "Quick Haul",
+      "VATNumber": "VAT987654",
+      "CompanyRegNo": "REG908172",
+      "Branch": "Durban",
+      "OfficeAddress": "89 Marine Drive, Durban",
+      "StorageAddress": "Depot C, Durban Port",
+      "TownCity": "Durban",
+      "Province": "KwaZulu-Natal",
+      "ServiceProviderServiceTypeId": 105,
+      "DesignationNumber": "D-003",
+      "RatePerKm": 11.75,
+      "RateAuthorisedOn": "2024-03-22",
+      "RateAuthorisedby": "Nina Patel",
+      "IsActive": false,
+      "IsActiveOn": "",
+      "IsActiveby": "",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Phone", "Value": "+27 31 432 1234" }]
+    },
+    {
+      "id": 4,
+      "Name": "Urban Cargo",
+      "VATNumber": "VAT192837",
+      "CompanyRegNo": "REG123987",
+      "Branch": "Port Elizabeth",
+      "OfficeAddress": "21 Freight Rd, PE Industrial Area",
+      "StorageAddress": "Building B, Port Logistics",
+      "TownCity": "Port Elizabeth",
+      "Province": "Eastern Cape",
+      "ServiceProviderServiceTypeId": 103,
+      "DesignationNumber": "D-004",
+      "RatePerKm": 13.3,
+      "RateAuthorisedOn": "2024-04-01",
+      "RateAuthorisedby": "Linda Xulu",
+      "IsActive": true,
+      "IsActiveOn": "2024-04-02",
+      "IsActiveby": "Manager C",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-04-03",
+      "IsVerifiedby": "Auditor B",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Email", "Value": "urban@cargo.co.za" }]
+    },
+    {
+      "id": 5,
+      "Name": "Green Haulers",
+      "VATNumber": "VAT555777",
+      "CompanyRegNo": "REG441122",
+      "Branch": "Bloemfontein",
+      "OfficeAddress": "77 Transport Ave, Bloemfontein",
+      "StorageAddress": "Yard 7, Green Depot",
+      "TownCity": "Bloemfontein",
+      "Province": "Free State",
+      "ServiceProviderServiceTypeId": 106,
+      "DesignationNumber": "D-005",
+      "RatePerKm": 10.9,
+      "RateAuthorisedOn": "2024-05-10",
+      "RateAuthorisedby": "Sizwe Ndlovu",
+      "IsActive": true,
+      "IsActiveOn": "2024-05-11",
+      "IsActiveby": "Admin Team",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-05-12",
+      "IsVerifiedby": "Reviewer X",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-05-15",
+      "IsAccreditedby": "Transport Council",
+      "ContactDetails": [
+        { "Type": "Email", "Value": "info@greenhaulers.co.za" },
+        { "Type": "Phone", "Value": "+27 51 777 2233" }
+      ]
+    },
+    {
+      "id": 6,
+      "Name": "LogiTrack Express",
+      "VATNumber": "VAT221133",
+      "CompanyRegNo": "REG445566",
+      "Branch": "Pretoria",
+      "OfficeAddress": "12 Tracker Lane, Pretoria West",
+      "StorageAddress": "Lot 34, Cargo Hub, Pretoria",
+      "TownCity": "Pretoria",
+      "Province": "Gauteng",
+      "ServiceProviderServiceTypeId": 108,
+      "DesignationNumber": "D-006",
+      "RatePerKm": 13.8,
+      "RateAuthorisedOn": "2024-02-05",
+      "RateAuthorisedby": "Claire Benson",
+      "IsActive": true,
+      "IsActiveOn": "2024-02-06",
+      "IsActiveby": "Admin B",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-02-07",
+      "IsVerifiedby": "Auditor C",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-02-08",
+      "IsAccreditedby": "Accreditor A",
+      "ContactDetails": [
+        { "Type": "Email", "Value": "support@logitrack.co.za" },
+        { "Type": "Phone", "Value": "+27 12 555 6677" }
+      ]
+    },
+    {
+      "id": 7,
+      "Name": "TransCape Movers",
+      "VATNumber": "VAT334455",
+      "CompanyRegNo": "REG778899",
+      "Branch": "George",
+      "OfficeAddress": "88 Hillside Rd, George",
+      "StorageAddress": "Unit 12, Logistics Park, George",
+      "TownCity": "George",
+      "Province": "Western Cape",
+      "ServiceProviderServiceTypeId": 110,
+      "DesignationNumber": "D-007",
+      "RatePerKm": 15.0,
+      "RateAuthorisedOn": "2024-04-18",
+      "RateAuthorisedby": "Moses Mabena",
+      "IsActive": true,
+      "IsActiveOn": "2024-04-20",
+      "IsActiveby": "Admin D",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-04-21",
+      "IsAccreditedby": "Quality Team",
+      "ContactDetails": [{ "Type": "Phone", "Value": "+27 44 321 0987" }]
+    },
+    {
+      "id": 8,
+      "Name": "Secure Ship SA",
+      "VATNumber": "VAT998877",
+      "CompanyRegNo": "REG445599",
+      "Branch": "Nelspruit",
+      "OfficeAddress": "32 N4 Highway, Mbombela",
+      "StorageAddress": "Shed 3, Industrial Zone, Nelspruit",
+      "TownCity": "Nelspruit",
+      "Province": "Mpumalanga",
+      "ServiceProviderServiceTypeId": 109,
+      "DesignationNumber": "D-008",
+      "RatePerKm": 14.7,
+      "RateAuthorisedOn": "2024-03-03",
+      "RateAuthorisedby": "Zanele Dube",
+      "IsActive": false,
+      "IsActiveOn": "",
+      "IsActiveby": "",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Email", "Value": "info@secureship.co.za" }]
+    },
+    {
+      "id": 9,
+      "Name": "Metro Freight",
+      "VATNumber": "VAT556677",
+      "CompanyRegNo": "REG112233",
+      "Branch": "Kimberley",
+      "OfficeAddress": "20 Diamond Rd, Kimberley Central",
+      "StorageAddress": "Depot 9, Kimberley Logistics",
+      "TownCity": "Kimberley",
+      "Province": "Northern Cape",
+      "ServiceProviderServiceTypeId": 107,
+      "DesignationNumber": "D-009",
+      "RatePerKm": 11.4,
+      "RateAuthorisedOn": "2024-02-22",
+      "RateAuthorisedby": "Brian Mokoena",
+      "IsActive": true,
+      "IsActiveOn": "2024-02-23",
+      "IsActiveby": "Admin F",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-02-25",
+      "IsVerifiedby": "QA Manager",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-02-26",
+      "IsAccreditedby": "National Logistics Board",
+      "ContactDetails": [
+        { "Type": "Phone", "Value": "+27 53 881 1234" },
+        { "Type": "Email", "Value": "metro@freight.co.za" }
+      ]
+    },
+    {
+      "id": 10,
+      "Name": "EcoMove Solutions",
+      "VATNumber": "VAT445533",
+      "CompanyRegNo": "REG667788",
+      "Branch": "Polokwane",
+      "OfficeAddress": "19 Green Way, Polokwane North",
+      "StorageAddress": "Storage Bay 2, Limpopo Industrial Area",
+      "TownCity": "Polokwane",
+      "Province": "Limpopo",
+      "ServiceProviderServiceTypeId": 112,
+      "DesignationNumber": "D-010",
+      "RatePerKm": 13.0,
+      "RateAuthorisedOn": "2024-03-19",
+      "RateAuthorisedby": "Mpho Langa",
+      "IsActive": true,
+      "IsActiveOn": "2024-03-20",
+      "IsActiveby": "Coordinator Z",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-03-21",
+      "IsVerifiedby": "Team Lead",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Email", "Value": "eco@move.co.za" }]
+    },
+    {
+      "id": 11,
+      "Name": "Swift Fleet SA",
+      "VATNumber": "VAT102938",
+      "CompanyRegNo": "REG556677",
+      "Branch": "East London",
+      "OfficeAddress": "31 Ocean View, East London",
+      "StorageAddress": "Zone 6, Port Yard, East London",
+      "TownCity": "East London",
+      "Province": "Eastern Cape",
+      "ServiceProviderServiceTypeId": 113,
+      "DesignationNumber": "D-011",
+      "RatePerKm": 12.9,
+      "RateAuthorisedOn": "2024-05-01",
+      "RateAuthorisedby": "Lerato Gumbi",
+      "IsActive": false,
+      "IsActiveOn": "",
+      "IsActiveby": "",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-05-03",
+      "IsVerifiedby": "QA Head",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Phone", "Value": "+27 43 201 2222" }]
+    },
+    {
+      "id": 12,
+      "Name": "Global Reach Logistics",
+      "VATNumber": "VAT665544",
+      "CompanyRegNo": "REG009988",
+      "Branch": "Welkom",
+      "OfficeAddress": "67 Logistics Lane, Welkom",
+      "StorageAddress": "Depot E, Central Freight Hub, Welkom",
+      "TownCity": "Welkom",
+      "Province": "Free State",
+      "ServiceProviderServiceTypeId": 114,
+      "DesignationNumber": "D-012",
+      "RatePerKm": 16.0,
+      "RateAuthorisedOn": "2024-04-07",
+      "RateAuthorisedby": "Samir Yusuf",
+      "IsActive": true,
+      "IsActiveOn": "2024-04-08",
+      "IsActiveby": "Admin E",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-04-10",
+      "IsAccreditedby": "Accreditor Y",
+      "ContactDetails": [{ "Type": "Email", "Value": "info@globalreach.co.za" }]
+    },
+    {
+      "id": 13,
+      "Name": "King's Freight",
+      "VATNumber": "VAT554433",
+      "CompanyRegNo": "REG334455",
+      "Branch": "Rustenburg",
+      "OfficeAddress": "54 Mine Road, Rustenburg",
+      "StorageAddress": "Warehouse K1, North Industrial Park",
+      "TownCity": "Rustenburg",
+      "Province": "North West",
+      "ServiceProviderServiceTypeId": 115,
+      "DesignationNumber": "D-013",
+      "RatePerKm": 12.0,
+      "RateAuthorisedOn": "2024-06-01",
+      "RateAuthorisedby": "David King",
+      "IsActive": true,
+      "IsActiveOn": "2024-06-02",
+      "IsActiveby": "Transport Admin",
+      "IsVerified": true,
+      "IsVerifiedOn": "2024-06-03",
+      "IsVerifiedby": "Quality Lead",
+      "IsAccredited": true,
+      "IsAccreditedOn": "2024-06-04",
+      "IsAccreditedby": "National Board",
+      "ContactDetails": [
+        { "Type": "Phone", "Value": "+27 14 123 4567" },
+        { "Type": "Email", "Value": "kings@freight.co.za" }
+      ]
+    },
+    {
+      "id": 14,
+      "Name": "RapidX Couriers",
+      "VATNumber": "VAT111222",
+      "CompanyRegNo": "REG667799",
+      "Branch": "Mthatha",
+      "OfficeAddress": "5 High Street, Mthatha",
+      "StorageAddress": "Depot 2, Southern Logistics",
+      "TownCity": "Mthatha",
+      "Province": "Eastern Cape",
+      "ServiceProviderServiceTypeId": 116,
+      "DesignationNumber": "D-014",
+      "RatePerKm": 10.5,
+      "RateAuthorisedOn": "2024-03-28",
+      "RateAuthorisedby": "Kevin Ndaba",
+      "IsActive": true,
+      "IsActiveOn": "2024-03-29",
+      "IsActiveby": "Operations Lead",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Email", "Value": "help@rapidx.co.za" }]
+    },
+    {
+      "id": 15,
+      "Name": "TrailLink Carriers",
+      "VATNumber": "VAT889900",
+      "CompanyRegNo": "REG777888",
+      "Branch": "Upington",
+      "OfficeAddress": "102 Desert Way, Upington",
+      "StorageAddress": "Yard C, Dry Port, Upington",
+      "TownCity": "Upington",
+      "Province": "Northern Cape",
+      "ServiceProviderServiceTypeId": 117,
+      "DesignationNumber": "D-015",
+      "RatePerKm": 17.2,
+      "RateAuthorisedOn": "2024-05-24",
+      "RateAuthorisedby": "Isaac Brand",
+      "IsActive": false,
+      "IsActiveOn": "",
+      "IsActiveby": "",
+      "IsVerified": false,
+      "IsVerifiedOn": "",
+      "IsVerifiedby": "",
+      "IsAccredited": false,
+      "IsAccreditedOn": "",
+      "IsAccreditedby": "",
+      "ContactDetails": [{ "Type": "Phone", "Value": "+27 54 999 8888" }]
+    }
+  ],
+  "serviceProviderTypes": [
+    {
+      "id": "1",
+      "code": "A1",
+      "description": "Funeral Director",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "2",
+      "code": "B2",
+      "description": "Florist",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "3",
+      "code": "C3",
+      "description": "Caterer",
+      "createdBy": "Editor",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "4",
+      "code": "D4",
+      "description": "Grave Digging Service",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "5",
+      "code": "E5",
+      "description": "Headstone Supplier",
+      "createdBy": "Admin",
+      "updatedBy": "Reviewer"
+    },
+    {
+      "id": "6",
+      "code": "F6",
+      "description": "Venue Hire",
+      "createdBy": "Editor",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "7",
+      "code": "G7",
+      "description": "Live Musicians",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "8",
+      "code": "H8",
+      "description": "Audio‑Visual Service",
+      "createdBy": "Reviewer",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "9",
+      "code": "I9",
+      "description": "Limousine Service",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "10",
+      "code": "J10",
+      "description": "Obituary Writer",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "11",
+      "code": "K11",
+      "description": "Memorial Video",
+      "createdBy": "Editor",
+      "updatedBy": "Reviewer"
+    },
+    {
+      "id": "12",
+      "code": "L12",
+      "description": "Bagpiper",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "13",
+      "code": "M13",
+      "description": "Organist",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "14",
+      "code": "N14",
+      "description": "Solo Vocalist",
+      "createdBy": "Reviewer",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "15",
+      "code": "O15",
+      "description": "Photo Slideshow",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "16",
+      "code": "P16",
+      "description": "Keepsake Printing",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "17",
+      "code": "Q17",
+      "description": "Urn Supplier",
+      "createdBy": "Admin",
+      "updatedBy": "Reviewer"
+    },
+    {
+      "id": "18",
+      "code": "R18",
+      "description": "Dove Release",
+      "createdBy": "Editor",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "19",
+      "code": "S19",
+      "description": "Fireworks Tribute",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "20",
+      "code": "T20",
+      "description": "Balloon Release",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "21",
+      "code": "U21",
+      "description": "Memory Table Setup",
+      "createdBy": "Reviewer",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "22",
+      "code": "V22",
+      "description": "Photo Montage Editing",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "23",
+      "code": "W23",
+      "description": "Eulogy Coach",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "24",
+      "code": "X24",
+      "description": "Celebrant",
+      "createdBy": "Admin",
+      "updatedBy": "Reviewer"
+    },
+    {
+      "id": "25",
+      "code": "Y25",
+      "description": "Memorial Jewelry",
+      "createdBy": "Editor",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "26",
+      "code": "Z26",
+      "description": "Tree‑Planting Tribute",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "27",
+      "code": "AA27",
+      "description": "Virtual Guestbook Host",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    },
+    {
+      "id": "28",
+      "code": "BB28",
+      "description": "Livestream Technician",
+      "createdBy": "Reviewer",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "29",
+      "code": "CC29",
+      "description": "ASL Interpreter",
+      "createdBy": "Admin",
+      "updatedBy": "Admin"
+    },
+    {
+      "id": "30",
+      "code": "DD30",
+      "description": "Pet Bereavement Care",
+      "createdBy": "Admin",
+      "updatedBy": "Editor"
+    }
+  ],
+  "areacodes": [
+    {
+      "id": "1",
+      "code": "001",
+      "description": "United States/Canada",
+      "type": "International",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "2",
+      "code": "044",
+      "description": "United Kingdom",
+      "type": "International",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "3",
+      "code": "091",
+      "description": "India",
+      "type": "International",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "4",
+      "code": "081",
+      "description": "Japan",
+      "type": "International",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "5",
+      "code": "061",
+      "description": "Australia",
+      "type": "International",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "6",
+      "code": "011",
+      "description": "Landline - New York",
+      "type": "Landline",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "7",
+      "code": "022",
+      "description": "Landline - Mumbai",
+      "type": "Landline",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "8",
+      "code": "079",
+      "description": "Landline - Ahmedabad",
+      "type": "Landline",
+      "isActive": false,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "9",
+      "code": "0987654321",
+      "description": "Mobile - Vodafone India",
+      "type": "Mobile",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "10",
+      "code": "0821",
+      "description": "Landline - Mysuru",
+      "type": "Landline",
+      "isActive": true,
+      "view": "View",
+      "isDeleted": false
+    },
+    {
+      "id": "11",
+      "code": "055",
+      "description": "Mobile - UAE Etisalat",
+      "type": "Mobile",
+      "isActive": false,
+      "view": "View",
+      "isDeleted": false
+    }
+  ],
+  "funeralRecords": [
+    {
+      "status": "Open",
+      "caseRef": "SAF-001",
+      "caseNo": "C-2025-001",
+      "caseDate": "2025-06-01",
+      "callerName": "Thabo Mokoena",
+      "deceasedName": "Nomsa Dlamini",
+      "client": "Mzansi Funeral Services",
+      "type": "Natural Causes",
+      "funeralDate": "2025-06-07",
+      "callerFirstName": "Thabo",
+      "callerLastName": "Mokoena",
+      "id": "4416"
+    },
+    {
+      "status": "Pending",
+      "caseRef": "SAF-002",
+      "caseNo": "C-2025-002",
+      "caseDate": "2025-06-02",
+      "callerName": "Ayanda Sithole",
+      "deceasedName": "Bongani Khumalo",
+      "client": "Ubuntu Memorials",
+      "type": "Accident",
+      "funeralDate": "2025-06-10",
+      "callerFirstName": "Ayanda",
+      "callerLastName": "Sithole",
+      "id": "987f"
+    },
+    {
+      "status": "Closed",
+      "caseRef": "SAF-003",
+      "caseNo": "C-2025-003",
+      "caseDate": "2025-05-30",
+      "callerName": "Sipho Nkosi",
+      "deceasedName": "Lindiwe Mhlongo",
+      "client": "Rainbow Funerals",
+      "type": "Illness",
+      "funeralDate": "2025-06-05",
+      "callerFirstName": "Sipho",
+      "callerLastName": "Nkosi",
+      "id": "ea73"
+    },
+    {
+      "status": "In Review",
+      "caseRef": "SAF-004",
+      "caseNo": "C-2025-004",
+      "caseDate": "2025-06-03",
+      "callerName": "Zanele Ndlovu",
+      "deceasedName": "Themba Zulu",
+      "client": "Mandela Burial Services",
+      "type": "Unknown",
+      "funeralDate": "2025-06-09",
+      "callerFirstName": "Zanele",
+      "callerLastName": "Ndlovu",
+      "id": "221d"
+    },
+    {
+      "status": "Open",
+      "caseRef": "SAF-005",
+      "caseNo": "C-2025-005",
+      "caseDate": "2025-06-04",
+      "callerName": "Lebo Seboko",
+      "deceasedName": "Gugulethu Maseko",
+      "client": "BaSotho Funerals",
+      "type": "Homicide",
+      "funeralDate": "2025-06-12",
+      "callerFirstName": "Lebo",
+      "callerLastName": "Seboko",
+      "id": "3ee7"
+    }
+  ],
+  "client-groups": [
+    {
+      "ClientGroupId": 1,
+      "Name": "Group A",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 2,
+      "Name": "Group B",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 3,
+      "Name": "Group C",
+      "IsActive": false,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 4,
+      "Name": "Group D",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 5,
+      "Name": "Group E",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 6,
+      "Name": "Group F",
+      "IsActive": false,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 7,
+      "Name": "Group G",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 8,
+      "Name": "Group H",
+      "IsActive": false,
+      "IsDeleted": true
+    },
+    {
+      "ClientGroupId": 9,
+      "Name": "Group I",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 10,
+      "Name": "Group J",
+      "IsActive": true,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 11,
+      "Name": "Group K",
+      "IsActive": false,
+      "IsDeleted": false
+    },
+    {
+      "ClientGroupId": 12,
+      "Name": "Group L",
+      "IsActive": true,
+      "IsDeleted": false
+    }
+  ],
+  "clients": [
+    {
+      "Id": 1,
+      "Name": "Alpha Corp",
+      "ClaimsManager": "John Doe",
+      "ClientGroup": "Life Funeral",
+      "AreaCode": "011",
+      "Telephone": "0111234567",
+      "IsActive": true,
+      "isDeleted": false
+    },
+    {
+      "Id": 2,
+      "Name": "Beta Enterprises",
+      "ClaimsManager": "Jane Smith",
+      "ClientGroup": "General Insurance",
+      "AreaCode": "012",
+      "Telephone": "0129876543",
+      "IsActive": false,
+      "isDeleted": false
+    },
+    {
+      "Id": 3,
+      "Name": "Gamma Limited",
+      "ClaimsManager": "Alan Wake",
+      "ClientGroup": "Medical Aid",
+      "AreaCode": "013",
+      "Telephone": "0134567890",
+      "IsActive": true,
+      "isDeleted": false
+    },
+    {
+      "Id": 4,
+      "Name": "Delta Inc",
+      "ClaimsManager": "Susan Finch",
+      "ClientGroup": "Funeral Cover",
+      "AreaCode": "014",
+      "Telephone": "0141122334",
+      "IsActive": true,
+      "isDeleted": false
+    },
+    {
+      "Id": 5,
+      "Name": "Omega Services",
+      "ClaimsManager": "Mark Lee",
+      "ClientGroup": "Life Cover",
+      "AreaCode": "015",
+      "Telephone": "0157788990",
+      "IsActive": false,
+      "isDeleted": false
+    }
+  ]
+}

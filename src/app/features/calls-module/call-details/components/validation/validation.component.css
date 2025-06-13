@@ -1,0 +1,189 @@
+.validation-wrapper {
+
+  padding: 20px;
+
+  background-color: #f8f9fa;
+
+  border-radius: 10px;
+
+  margin: 20px;
+
+}
+
+
+
+.form-section {
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 0 5px #ddd;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.form-row {
+
+  display: flex;
+
+  flex-direction: column;
+
+  margin-bottom: 15px;
+
+}
+
+
+
+.form-row label {
+
+  margin-bottom: 5px;
+
+  font-weight: 500;
+
+  color: #333;
+
+}
+
+
+
+.form-control {
+
+  padding: 8px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+}
+
+
+
+.validation-panels {
+
+  display: flex;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.left-panel, .right-panel {
+
+  flex: 1 1 300px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 0 5px #ddd;
+
+}
+
+
+
+.checkbox-group {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-bottom: 15px;
+
+}
+
+
+
+.validate-btn {
+
+  background-color: #05b9bc;
+
+  color: white;
+
+  padding: 10px 20px;
+
+  border-radius: 6px;
+
+  border: none;
+
+  cursor: pointer;
+
+}
+
+
+
+.btn-container {
+
+  text-align: right;
+
+}
+
+
+
+.form-row-row {
+
+  display: flex;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.form-group {
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+.small-input {
+
+  width: 250px; /* Adjust this size to match image input */
+
+}
+
+
+
+.form-group label {
+
+  margin-bottom: 4px;
+
+  font-weight: 500;
+
+}
+
+
+
+.form-group input,
+
+.form-group select {
+
+  height: 32px;
+
+  font-size: 14px;
+
+  padding: 4px 8px;
+
+}

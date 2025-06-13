@@ -1,0 +1,274 @@
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeForm()">✖</button>
+    <h2 class="modal-title"><i class="fas fa-edit"></i> Create New Client</h2>
+
+    <!-- Success Popup -->
+    <div class="success-popup" *ngIf="showSuccess">
+      <span>Client saved successfully</span>
+      <button class="close-success" (click)="showSuccess = false">✖</button>
+    </div>
+
+    <!-- Client Form -->
+    <form [formGroup]="clientForm" (ngSubmit)="onSave()">
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Company Name <span class="required">*</span></label>
+          <input
+            type="text"
+            formControlName="CompanyName"
+            placeholder="Enter Company Name"
+          />
+          <span
+            class="clear-icon"
+            *ngIf="clientForm.get('CompanyName')?.value"
+            (click)="clearField('CompanyName')"
+            >✕</span
+          >
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('CompanyName')?.touched &&
+              clientForm.get('CompanyName')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('CompanyName')?.errors?.['required']">
+              Company Name is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Client Group <span class="required">*</span></label>
+          <select formControlName="ClientGroup">
+            <option value="" disabled selected>Select Client Group</option>
+            <option value="Life Funeral">Life Funeral</option>
+            <!-- Add more options as needed -->
+          </select>
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('ClientGroup')?.touched &&
+              clientForm.get('ClientGroup')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('ClientGroup')?.errors?.['required']">
+              Client Group is required
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Address</label>
+          <textarea
+            formControlName="Address"
+            placeholder="Enter Address"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Client Group <span class="required">*</span></label>
+          <select formControlName="ClientGroup">
+            <option value="" disabled>Select Client Group</option>
+            <option value="Life Funeral">Life Funeral</option>
+            <!-- Add more options -->
+          </select>
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('ClientGroup')?.touched &&
+              clientForm.get('ClientGroup')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('ClientGroup')?.errors?.['required']"
+              >Client Group is required</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Address</label>
+          <textarea
+            formControlName="Address"
+            placeholder="Enter Address"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Telephone -->
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Telephone</label>
+          <ngx-intl-tel-input
+            [cssClass]="'custom'"
+            [preferredCountries]="[
+              CountryISO.UnitedStates,
+              CountryISO.UnitedKingdom
+            ]"
+            [enablePlaceholder]="true"
+            [searchCountryFlag]="true"
+            [separateDialCode]="true"
+            [searchCountryField]="searchFields"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.India"
+            [phoneValidation]="true"
+            name="Telephone"
+            formControlName="Telephone"
+          ></ngx-intl-tel-input>
+          <span
+            class="clear-icon"
+            *ngIf="clientForm.get('Telephone')?.value"
+            (click)="clearField('Telephone')"
+            >✕</span
+          >
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('Telephone')?.touched &&
+              clientForm.get('Telephone')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('Telephone')?.errors?.['required']"
+              >Telephone is required</small
+            >
+            <small *ngIf="clientForm.get('Telephone')?.errors?.['pattern']"
+              >Enter a valid number</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group input-container">
+          <label>Fax</label>
+          <ngx-intl-tel-input
+            [cssClass]="'custom'"
+            [preferredCountries]="[
+              CountryISO.UnitedStates,
+              CountryISO.UnitedKingdom
+            ]"
+            [enablePlaceholder]="true"
+            [searchCountryFlag]="true"
+            [separateDialCode]="true"
+            [searchCountryField]="searchFields"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.India"
+            [maxLength]="10"
+            [phoneValidation]="true"
+            name="fax"
+            formControlName="Fax"
+          >
+          </ngx-intl-tel-input>
+          <span
+            class="clear-icon"
+            *ngIf="clientForm.get('Fax')?.value"
+            (click)="clearField('Fax')"
+            >✕</span
+          >
+        </div>
+        <div class="form-group input-container">
+          <label>Mobile Number <span class="required">*</span></label>
+          <ngx-intl-tel-input
+            [cssClass]="'custom'"
+            [preferredCountries]="[
+              CountryISO.UnitedStates,
+              CountryISO.UnitedKingdom
+            ]"
+            [enablePlaceholder]="true"
+            [searchCountryFlag]="true"
+            [separateDialCode]="true"
+            [searchCountryField]="searchFields"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.India"
+            [phoneValidation]="true"
+            name="Mobile"
+            formControlName="Mobile"
+          ></ngx-intl-tel-input>
+          <span
+            class="clear-icon"
+            *ngIf="clientForm.get('Mobile')?.value"
+            (click)="clearField('Mobile')"
+            >✕</span
+          >
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('Mobile')?.touched &&
+              clientForm.get('Mobile')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('Mobile')?.errors?.['required']"
+              >Mobile Number is required</small
+            >
+            <small *ngIf="clientForm.get('Mobile')?.errors?.['pattern']"
+              >Enter a valid 10-digit number</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Web URL</label>
+          <input
+            type="text"
+            formControlName="WebURL"
+            placeholder="Enter Web URL"
+          />
+          <span
+            class="clear-icon"
+            *ngIf="clientForm.get('WebURL')?.value"
+            (click)="clearField('WebURL')"
+            >✕</span
+          >
+          <div
+            class="error-messages"
+            *ngIf="
+              clientForm.get('WebURL')?.touched &&
+              clientForm.get('WebURL')?.invalid
+            "
+          >
+            <small *ngIf="clientForm.get('WebURL')?.errors?.['pattern']">
+              Enter a valid URL
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group input-container full-width">
+          <label>Company Logo</label>
+          <!-- <input
+            type="text"
+            formControlName="CompanyLogo"
+            placeholder="Enter Company Logo"
+          /> -->
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Checkboxes -->
+      <div class="checkbox-row1">
+        <label>
+          <input type="checkbox" formControlName="IsActive" />
+          Is Active
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,228 @@
+<div class="overlay">
+  <div class="popup-container" [formGroup]="providerForm">
+    <!-- Header -->
+    <div class="popup-header">
+      <h2 class="popup-title">
+        <i class="fas fa-edit"></i> Create Service Provider
+      </h2>
+      <button class="close-btn" type="button" (click)="onClose()">×</button>
+    </div>
+    <!-- Body -->
+    <div class="popup-body">
+      <!-- Basic Info Rows -->
+      <div class="form-row">
+        <label>Name:</label>
+        <input type="text" formControlName="name" />
+        <label>VAT Number:</label>
+        <input type="text" formControlName="vatNumber" />
+      </div>
+
+      <div class="form-row">
+        <label>Company Reg. No.:</label>
+        <input type="text" formControlName="companyRegNo" />
+        <label>Branch:</label>
+        <input type="text" formControlName="branch" />
+      </div>
+
+      <div class="form-row">
+        <label>Office Address:</label>
+        <textarea rows="3" formControlName="officeAddress"></textarea>
+        <label
+          >Storage Address<br />
+          (if different):</label
+        >
+        <textarea rows="3" formControlName="storageAddress"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>Town / City:</label>
+        <input type="text" formControlName="townCity" />
+        <label>Province:</label>
+        <select formControlName="province">
+          <option value="">-- Select Province --</option>
+          <option value="Eastern Cape">Eastern Cape</option>
+          <option value="Free State">Free State</option>
+          <option value="Gauteng">Gauteng</option>
+          <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+          <option value="Limpopo">Limpopo</option>
+          <option value="Mpumalanga">Mpumalanga</option>
+          <option value="Northern Cape">Northern Cape</option>
+          <option value="North West">North West</option>
+          <option value="Western Cape">Western Cape</option>
+        </select>
+      </div>
+
+      <!-- Contact Numbers -->
+      <div class="form-row-num full-width">
+        <label class="section-label">Contact number/s:</label>
+        <div class="table-section" formArrayName="contactNumbers">
+          <div class="table-header">
+            <span>Telephone / Cell</span><span></span><span>Name</span
+            ><span>Comments</span>
+          </div>
+          <div
+            class="table-row"
+            *ngFor="let contact of contactNumbers.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <select class="country-code">
+              <option>+27</option>
+            </select>
+            <input type="text" formControlName="number" />
+            <input type="text" formControlName="name" />
+            <input type="text" formControlName="comment" />
+            <button
+              type="button"
+              class="rem-btn"
+              (click)="removeContactRow(i)"
+              *ngIf="contactNumbers.length > 1"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button type="button" class="add-btn" (click)="addContactRow()">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fax Numbers -->
+      <div class="form-row full-width">
+        <label class="section-label">Fax Numbers:</label>
+        <div class="table-section" formArrayName="faxNumbers">
+          <div class="table-header">
+            <span>Fax Number</span><span>Name</span><span>Comments</span>
+          </div>
+          <div
+            class="table-row"
+            *ngFor="let fax of faxNumbers.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <input type="text" formControlName="fax" />
+            <input type="text" formControlName="name" />
+            <input type="text" formControlName="comment" />
+            <button
+              type="button"
+              class="rem-btn"
+              (click)="removeFaxRow(i)"
+              *ngIf="faxNumbers.length > 1"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button type="button" class="add-btn" (click)="addFaxRow()">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Addresses -->
+      <div class="form-row full-width">
+        <label class="section-label">Email Addresses:</label>
+        <div class="table-section" formArrayName="emailAddresses">
+          <div
+            class="table-row"
+            *ngFor="let email of emailAddresses.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <input type="email" formControlName="email" />
+            <input type="text" formControlName="type" />
+            <button
+              type="button"
+              class="rem-btn"
+              (click)="removeEmailRow(i)"
+              *ngIf="emailAddresses.length > 1"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button
+              type="button"
+              class="add-btn"
+              (click)="addEmailRow()"
+              *ngIf="emailAddresses.length < 2"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Info -->
+      <div class="form-row">
+        <label for="serviceType">Service Type:</label>
+        <select formControlName="serviceType" required>
+          <option [value]="0">Select</option>
+          <option [value]="1">Added Value Services</option>
+          <option [value]="2">Funerary Claim Only</option>
+          <option [value]="3">Funerary Inf</option>
+          <option [value]="4">Funerary Management</option>
+        </select>
+
+        <label for="designationNo">Designation No:</label>
+        <input type="text" id="designationNo" formControlName="designationNo" />
+      </div>
+
+      <div class="form-roww">
+        <label>Rate / KM:</label>
+        <input type="number" formControlName="ratePerKm" class="rate-per-km" />
+        <label>Date Authorised:</label>
+        <input type="date" formControlName="dateAuthorised" />
+        <label class="form-label1">By:</label>
+        <input type="text" formControlName="authorisedBy" />
+      </div>
+
+      <!-- Flags and Statuses -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Can Edit Address:</label>
+          <input type="checkbox" formControlName="canEditAddress" />
+        </div>
+      </div>
+
+      <div class="form-row1">
+        <div class="form-group">
+          <label>Is Active:</label>
+          <input type="checkbox" formControlName="isActive" />
+        </div>
+        <label>Date Opened:</label>
+        <input type="date" formControlName="dateOpened" />
+        <label class="form-label1">By:</label>
+        <input type="text" formControlName="openedBy" />
+      </div>
+
+      <div class="form-row1">
+        <div class="form-group">
+          <label>Is Verified:</label>
+          <input type="checkbox" formControlName="isVerified" />
+        </div>
+        <label>Date Verified:</label>
+        <input type="date" formControlName="dateVerified" />
+        <label class="form-label1">By:</label>
+        <input type="text" formControlName="verifiedBy" />
+      </div>
+
+      <div class="form-row2">
+        <div class="form-group">
+          <label>Is Accredited:</label>
+          <input type="checkbox" formControlName="isAccredited" />
+        </div>
+        <label class="form-data-accredited">Date Accredited:</label>
+        <input
+          type="date"
+          formControlName="dateAccredited"
+          class="accredited-by"
+        />
+        <label class="form-label2">By:</label>
+        <input type="text" formControlName="accreditedBy" />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="popup-footer">
+      <button class="cancel-btn" type="button" (click)="onCancel()">
+        Cancel
+      </button>
+      <button class="save-btn" type="button" (click)="onSubmit()">Save</button>
+    </div>
+  </div>
+</div>

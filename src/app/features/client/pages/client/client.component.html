@@ -1,0 +1,16 @@
+<!-- AG Grid -->
+  <div class="ag-theme-alpine" style="height: 500px; width: 100%;">
+    <ag-grid-angular
+      class="ag-grid-responsive"
+      [rowData]="users"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [gridOptions]="gridOptions"
+      [components]="{
+      activeToggleRenderer: ActiveToggleRendererComponent,
+      softDeleteRenderer: softDeleteRenderer,
+    }"
+      (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+  </div>

@@ -1,0 +1,87 @@
+<div class="validation-wrapper">
+  <div class="form-section">
+    <div class="form-row-row">
+      <div class="form-group">
+        <label for="policyNumber">Policy Number</label>
+        <input id="policyNumber" type="text" class="form-control" [(ngModel)]="validation.policyNumber">
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" class="form-control" [(ngModel)]="validation.firstName">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" class="form-control" [(ngModel)]="validation.lastName">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="idNumber">ID Number</label>
+      <input id="idNumber" type="text" class="form-control" [(ngModel)]="validation.idNumber">
+    </div>
+
+    <div class="form-row">
+      <label for="relationship">Relationship</label>
+      <select id="relationship" class="form-control" [(ngModel)]="validation.relationship">
+        <option value="">Select</option>
+        <option value="spouse">Spouse</option>
+        <option value="child">Child</option>
+        <option value="parent">Parent</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="validation-panels">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h3><u>Validation</u></h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" [(ngModel)]="validation.fusionDb"> Fusion Database</label>
+        <label><input type="checkbox" [(ngModel)]="validation.websiteVerification"> Website Verification</label>
+        <label><input type="checkbox" [(ngModel)]="validation.memberCertificate"> Member Certificate</label>
+        <label><input type="checkbox" [(ngModel)]="validation.telephonically"> Telephonically</label>
+      </div>
+
+      <input type="text" class="form-control mt-2" placeholder="Other" [(ngModel)]="validation.otherMethod">
+
+      <div class="form-row">
+        <label for="benefitValid">Benefit Valid</label>
+        <select id="benefitValid" class="form-control" [(ngModel)]="validation.benefitValid">
+          <option value="">Select</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="btn-container">
+        <button class="validate-btn" (click)="onValidate()">Validate</button>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <h3><u>Previous Validation</u></h3>
+      <div class="form-row">
+        <label>Validation Method</label>
+        <textarea class="form-control" rows="3" [value]="previousValidation.method" disabled></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>Date of Validation</label>
+        <input type="text" class="form-control" [value]="previousValidation.date" disabled>
+      </div>
+
+      <div class="form-row">
+        <label>Validated By</label>
+        <input type="text" class="form-control" [value]="previousValidation.validatedBy" disabled>
+      </div>
+
+      <div class="form-row">
+        <label>Benefit Valid</label>
+        <span>{{ previousValidation.benefitValid ? 'Yes' : 'No' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

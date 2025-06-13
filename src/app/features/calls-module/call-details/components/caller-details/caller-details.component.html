@@ -1,0 +1,259 @@
+
+  <div class="caller-container1" *ngIf="activeTab === 'caller'">
+    <div class="caller-section">
+      <form [formGroup]="callerForm" class="caller-form">
+        <div class="form-group">
+          <label>Client</label>
+          <select formControlName="client">
+            <option *ngFor="let client of client" [value]="client">
+              {{ client }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Service Type</label>
+          <select formControlName="serviceType">
+            <option *ngFor="let service of serviceTypes" [value]="service">
+              {{ service }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-groupp full-width">
+          <p class="label">
+            Did you get consent to obtain the caller's personal information and
+            explained what it will be used for?
+          </p>
+          <div class="radio-group">
+            <label>
+              <input type="radio" formControlName="consent" value="yes" />
+              Yes
+            </label>
+            <label>
+              <input type="radio" formControlName="consent" value="no" />
+              No
+            </label>
+            <label>
+              <input type="radio" formControlName="consent" value="na" />
+              N/A
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <p-floatLabel variant="on">
+              <p-iconField>
+                <input
+                  pInputText
+                  id="on_label"
+                  formControlName="firstName"
+                  autocomplete="off"
+                  class="input"
+                />
+              </p-iconField>
+              <label for="on_label">First Name</label>
+            </p-floatLabel>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <p-floatLabel variant="on">
+              <p-iconField>
+                <input
+                  pInputText
+                  id="on_label"
+                  formControlName="secondName"
+                  autocomplete="off"
+                  class="input"
+                />
+              </p-iconField>
+              <label for="on_label">Second Name</label>
+            </p-floatLabel>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Callback Number</label>
+            <ngx-intl-tel-input
+              [cssClass]="'custom'"
+              [preferredCountries]="[
+                CountryISO.UnitedStates,
+                CountryISO.UnitedKingdom
+              ]"
+              [enablePlaceholder]="true"
+              [searchCountryFlag]="true"
+              [separateDialCode]="true"
+              [searchCountryField]="searchFields"
+              [selectFirstCountry]="false"
+              [selectedCountryISO]="CountryISO.India"
+              [phoneValidation]="true"
+              name="callbackNumber"
+              formControlName="callbackNumber"
+            ></ngx-intl-tel-input>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>24 Hour Number</label>
+            <ngx-intl-tel-input
+              [cssClass]="'custom'"
+              [preferredCountries]="[
+                CountryISO.UnitedStates,
+                CountryISO.UnitedKingdom
+              ]"
+              [enablePlaceholder]="true"
+              [searchCountryFlag]="true"
+              [separateDialCode]="true"
+              [searchCountryField]="searchFields"
+              [selectFirstCountry]="false"
+              [selectedCountryISO]="CountryISO.India"
+              [phoneValidation]="true"
+              name="24HourNumber"
+              formControlName="24HourNumber"
+            ></ngx-intl-tel-input>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Cell Number</label>
+            <ngx-intl-tel-input
+              [cssClass]="'custom'"
+              [preferredCountries]="[
+                CountryISO.UnitedStates,
+                CountryISO.UnitedKingdom
+              ]"
+              [enablePlaceholder]="true"
+              [searchCountryFlag]="true"
+              [separateDialCode]="true"
+              [searchCountryField]="searchFields"
+              [selectFirstCountry]="false"
+              [selectedCountryISO]="CountryISO.India"
+              [phoneValidation]="true"
+              name="cellNumber"
+              formControlName="CellNumber"
+            ></ngx-intl-tel-input>
+          </div>
+        </div>
+
+        <div class="form-grouppp">
+          <label class="labell">Caller is Policy Holder</label>
+          <div class="radio-group">
+            <label>
+              <input
+                type="radio"
+                formControlName="isPolicyHolder"
+                value="yes"
+              />
+              Yes
+            </label>
+            <label>
+              <input type="radio" formControlName="isPolicyHolder" value="no" />
+              No
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <p-floatLabel variant="on">
+              <p-iconField>
+                <input
+                  pInputText
+                  id="on_label"
+                  formControlName="firstName"
+                  autocomplete="off"
+                  class="input"
+                />
+              </p-iconField>
+              <label for="on_label">Agent</label>
+            </p-floatLabel>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <p-floatLabel variant="on">
+              <p-iconField>
+                <input
+                  pInputText
+                  id="on_label"
+                  formControlName="firstName"
+                  autocomplete="off"
+                  class="input"
+                />
+              </p-iconField>
+              <label for="on_label">Call Open Date</label>
+            </p-floatLabel>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Language</label>
+          <select formControlName="language">
+            <option value="">Select</option>
+            <option *ngFor="let lang of languages" [value]="lang">
+              {{ lang }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-grouppp">
+          <label class="labell">Case Reference Number Given To Caller? </label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" formControlName="refGiven" value="yes" />
+              Yes
+            </label>
+            <label>
+              <input type="radio" formControlName="refGiven" value="no" />
+              No
+            </label>
+          </div>
+        </div>
+        <div class="call-button">
+          <button class="call-save-button">Save</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="key-features">
+      <a href="#">Key Features</a>
+      <ul>
+        <li>24 Hour assistance on any Legal Matter</li>
+        <li>
+          <span class="highlight">30 min FREE face-to-face consultation</span>
+          with an attorney
+        </li>
+        <li>
+          Free <span class="highlight">Standard Legal Documentation</span>
+        </li>
+        <li>Free Will Service</li>
+        <li>
+          Free <span class="highlight">Estate Planning</span> (Office Hours
+          Only)
+        </li>
+        <li>
+          <span class="highlight">Labour Law & Industrial relations</span>
+          services
+        </li>
+        <li>
+          <span class="highlight">Tax</span> Info Helpline (Office Hours Only)
+        </li>
+      </ul>
+
+      <a href="#">Conditions</a>
+      <ul>
+        <li>This service is confined to within RSA</li>
+        <li>This service relates to South African Law only</li>
+      </ul>
+
+      <a href="#">Who Qualifies for this Benefit?</a>
+      <p>Any person listed as a life covered under a valid policy.</p>
+    </div>
+  </div>
+
