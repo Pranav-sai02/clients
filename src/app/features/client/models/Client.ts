@@ -10,6 +10,7 @@ export interface Client {
   IsActive: boolean;
 
   // Optional fields (not shown in UI)
+  IsDeleted?: Boolean;
   ClientGroupId?: number;
   AreaCodeId?: number;
   Address?: string;

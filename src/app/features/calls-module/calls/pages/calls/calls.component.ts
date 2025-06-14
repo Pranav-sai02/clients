@@ -38,14 +38,14 @@ export class CallsComponent implements OnInit {
       cellRenderer: (params: ICellRendererParams) =>
         `<a style="color:blue;cursor:pointer;text-decoration:underline;">${params.value}</a>`,
       onCellClicked: (event: CellClickedEvent) => {
-        const call = event.data;
+        const SelectedCall = event.data;
 
-        this.callDataService.setSelectedCall(call);
+        this.callDataService.setSelectedCall(SelectedCall);
 
         const queryParams = {
-          callRef: call.caseRef,
-          callerName: `${call.callerFirstName} ${call.callerLastName}`,
-          client: call.client,
+          callRef: SelectedCall.caseRef,
+          callerName: `${SelectedCall.callerFirstName} ${SelectedCall.callerLastName}`,
+          client: SelectedCall.client,
         };
 
         this.router.navigate(['/cases/case-details'], { queryParams });
@@ -149,7 +149,7 @@ export class CallsComponent implements OnInit {
     this.resizeGrid();
   }
 
-  onCellClicked(event: any): void {
+  onrowClicked(event: any): void {
     const call: Call = event.data;
 
     this.callDataService.setSelectedCall(call);

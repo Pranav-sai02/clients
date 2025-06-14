@@ -26,7 +26,7 @@ export class SnackbarService {
      constructor(private toastr: ToastrService) {}
 
   showError(message: string): void {
-    this.toastr.error(message, 'Error');
+   // this.toastr.error(message, 'Error');
   }
 
   showSuccess(message: string): void {

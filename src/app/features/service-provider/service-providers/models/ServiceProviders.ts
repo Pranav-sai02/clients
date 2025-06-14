@@ -1,5 +1,6 @@
 
 export interface ServiceProviders {
+  IsDeleted?: boolean;
   ServiceProviderId: number;
   Name: string;
   VATNumber: string;

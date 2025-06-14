@@ -22,7 +22,7 @@ export interface ClientGroupStateModel {
 })
 @Injectable()
 export class ClientGroupState {
-  constructor(private clientGroupService: ClientGroupService) {}
+  constructor(private clientGroupService: ClientGroupService) { }
 
   @Selector()
   static getClientGroups(state: ClientGroupStateModel) {
@@ -81,13 +81,28 @@ export class ClientGroupState {
     return this.clientGroupService.deleteClientGroup(id);
   }
 
+  // @Action(SoftDeleteClientGroup)
+  // softDeleteClientGroup(ctx: StateContext<ClientGroupStateModel>, action: SoftDeleteClientGroup) {
+  //   const id = action.payload.ClientGroupId!;
+  //   const state = ctx.getState();
+  //   const filteredList = state.clientGroups.filter(group => group.ClientGroupId !== id);
+  //   ctx.patchState({ clientGroups: filteredList });
+  //   return this.clientGroupService.softDeleteClientGroup(id);
+  // }
   @Action(SoftDeleteClientGroup)
   softDeleteClientGroup(ctx: StateContext<ClientGroupStateModel>, action: SoftDeleteClientGroup) {
     const id = action.payload.ClientGroupId!;
-    const state = ctx.getState();
-    const filteredList = state.clientGroups.filter(group => group.ClientGroupId !== id);
-    ctx.patchState({ clientGroups: filteredList });
-    return this.clientGroupService.softDeleteClientGroup(id);
+    const updatedGroup = { ...action.payload, isDeleted: true };
+
+    return this.clientGroupService.softDeleteClientGroup(id).pipe(
+      tap(() => {
+        const state = ctx.getState();
+        const updatedList = state.clientGroups.map(group =>
+          group.ClientGroupId === id ? updatedGroup : group
+        );
+        ctx.patchState({ clientGroups: updatedList });
+      })
+    );
   }
 
 }

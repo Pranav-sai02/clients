@@ -33,7 +33,7 @@ export class ClientGroupComponent implements OnInit {
   ActiveToggleRendererComponent = ActiveToggleRendererComponent;
   SoftDeleteRendererComponent = SoftDeleteButtonRendererComponent;
 
-  gridApi!: GridApi;
+  gridApi!: GridApi<ClientGroup>;
 
   rowData: ClientGroup[] = [];
   columnDefs: ColDef<ClientGroup>[] = [
@@ -87,25 +87,25 @@ export class ClientGroupComponent implements OnInit {
       minWidth: 120,
       cellRenderer: () => {
         return `
-      <button
-        style="
-          background-color: #05b9bc;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-weight: 500;
-          height: 42px;
-          display: flex;
-          align-items: center;
-          padding: 0 14px;
-          font-size: 1rem;
-          justify-content: center;
-          cursor: pointer;
-        "
-      >
-        Save
-      </button>
-    `;
+        <button
+          style="
+            background-color: #05b9bc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            font-size: 1rem;
+            justify-content: center;
+            cursor: pointer;
+          "
+        >
+          Save
+        </button>
+      `;
       },
       cellStyle: {
         borderRight: '1px solid #ccc',
@@ -124,7 +124,7 @@ export class ClientGroupComponent implements OnInit {
     private store: Store,
     private clientGroupService: ClientGroupService,
     private snackbarService: SnackbarService
-  ) {}
+  ) { }
 
   defaultColDef: ColDef = {
     flex: 1,
@@ -135,57 +135,108 @@ export class ClientGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadClientGroups());
+    // this.store.select(ClientGroupState.getClientGroups).subscribe((data) => {
+    //   console.log('From select:', data);
+    //   this.rowData = data;
+    // });
     this.store.select(ClientGroupState.getClientGroups).subscribe((data) => {
       console.log('From select:', data);
-      this.rowData = data;
+      this.rowData = data.filter(group => !group.IsDeleted);
     });
+
   }
 
   onGridReady(params: any): void {
     this.gridApi = params.api;
   }
 
-  onCellValueChanged(event: CellValueChangedEvent): void {
-    const row = event.data;
-    const isNew = !row.ClientGroupId;
+  // onCellValueChanged(event: CellValueChangedEvent): void {
+  //   const row = event.data;
+  //   const isNew = !row.ClientGroupId;
 
-    // Just mark the row as edited; don't save automatically
-    row.isEdited = true;
-    this.gridApi.applyTransaction({ update: [row] });
+  //   // Just mark the row as edited; don't save automatically
+  //   row.isEdited = true;
+  //   this.gridApi.applyTransaction({ update: [row] });
+  // }
+  onCellValueChanged(event: CellValueChangedEvent): void {
+    const updatedRow = event.data;
+
+    // 🔍 Find original row reference in rowData
+    const index = this.rowData.findIndex(r => r === updatedRow || r.ClientGroupId === updatedRow.ClientGroupId);
+
+    if (index > -1) {
+      this.rowData[index].IsEdited = true; // ✅ Update actual reference
+      this.gridApi.applyTransaction({ update: [this.rowData[index]] });
+    }
   }
+
 
   saveRow(row: ClientGroup): void {
     const isComplete =
-      row.Name &&
-      row.Name.trim() !== '' &&
-      row.IsActive !== null &&
-      row.IsActive !== undefined;
+      row.Name && row.Name.trim() !== '' &&
+      row.IsActive !== null && row.IsActive !== undefined;
 
-    if (isComplete) {
-      this.clientGroupService.addClientGroup(row).subscribe({
-      next: () => {
+    if (!isComplete) {
+      this.snackbarService.showError('Please complete all fields before saving.');
+      return;
+    }
+
+    const isNew = !row.ClientGroupId;
+
+    // Skip save if not edited and not new
+    if (!isNew && !row.IsEdited) {
+      this.snackbarService.showInfo('No changes to save.');
+      return;
+    }
+
+    const saveObservable = isNew
+      ? this.clientGroupService.addClientGroup(row)
+      : this.clientGroupService.updateClientGroup(row);
+
+    saveObservable.subscribe({
+      next: (savedRow: ClientGroup) => {
         this.snackbarService.showSuccess('Saved successfully!');
+
+        // ✅ Assign new ID if it's a fresh row
+        if (isNew && savedRow?.ClientGroupId) {
+          row.ClientGroupId = savedRow.ClientGroupId;
+        }
+
         row.IsEdited = false;
+
+        // ✅ Refresh grid UI
         this.gridApi.applyTransaction({ update: [row] });
+
+        // ✅ Reload from store (ensures proper state)
         this.store.dispatch(new LoadClientGroups());
+
+        // ✅ Optional: refresh cells to force UI update (you can keep or remove this)
+        setTimeout(() => {
+          this.gridApi.redrawRows();
+        }, 100);
       },
-    //  error: () => {
-    //     this.snackbarService.showError('Failed to save. Try again.');
-    //   }
+      error: () => {
+        this.snackbarService.showError('Failed to save. Try again.');
+      }
     });
-  } else {
-    this.snackbarService.showError('Please complete all fields before saving.');
   }
-}
 
   getRowClass = (params: any) => {
     // If AreaCodeId is not present, it's a newly added temporary row
     return !params.data.ClientGroupId ? 'temporary-row' : '';
   };
 
-  softDeleteProvider(areaCode: ClientGroup): void {
-    const updatedAreaCode = { ...areaCode, isDeleted: true };
-    this.store.dispatch(new SoftDeleteClientGroup(updatedAreaCode));
+  softDeleteProvider(ClientGroup: ClientGroup): void {
+    // Mark the item as deleted (optional if you want to preserve the flag)
+    ClientGroup.IsDeleted = true;
+
+    // Remove it from rowData
+    this.rowData = this.rowData.filter(group => group.ClientGroupId !== ClientGroup.ClientGroupId);
+
+    // Optionally update the grid manually if you want
+    // this.gridApi.setRowData(this.rowData);
+
+    this.snackbarService.showSuccess('Removed successfully');
   }
 
   addRow(): void {
@@ -193,7 +244,12 @@ export class ClientGroupComponent implements OnInit {
       Name: '',
       IsActive: true,
     };
-    this.store.dispatch(new AddClientGroup(newRow));
+
+    if (this.gridApi) {
+      this.gridApi.applyTransaction({ add: [newRow] });
+    }
+
+    this.rowData = [newRow, ...this.rowData];
   }
 
   getContextMenuItems: GetContextMenuItems = (

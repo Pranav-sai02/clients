@@ -31,4 +31,7 @@ export class ClientService {
   deleteClient(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  softDelete(id: number): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${id}`, { IsDeleted: true });
+  }
 }
