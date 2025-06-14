@@ -38,9 +38,9 @@ export class ServiceProviderTypesService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
   softDeleteServiceProviderType(id: number): Observable<any> {
-  return this.http.patch(`${this.apiUrl}/${id}`, { IsDeleted: true });
-}
+    return this.http.patch(`${this.apiUrl}/${id}`, { IsDeleted: true });
+  }
 
-  
+
 
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { ColDef, GetContextMenuItems, GetContextMenuItemsParams, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { ServiceProviderTypes } from '../../models/ServiceProviderTypes';
 import { ServiceProviderTypesService } from '../../services/serviceProvider-types/service-provider-types.service';
 import { ActiveToggleRendererComponent } from '../../../../../shared/component/active-toggle-renderer/active-toggle-renderer.component';
 import { SoftDeleteButtonRendererComponent } from '../../../../../shared/component/soft-delete-button-renderer/soft-delete-button-renderer.component';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
+import { Store } from '@ngxs/store';
 
 
 @Component({
@@ -23,16 +24,30 @@ export class ServiceProvidersTypesComponent implements OnInit {
     {
       field: 'ServiceProvideCode',
       headerName: 'Code',
+      editable: true,
       flex: 1,
       minWidth: 90,
+      cellEditor: 'agTextCellEditor',
+      valueFormatter: (params) =>
+        params.value ? params.value : 'Enter Code',
+      cellClassRules: {
+        'hint-text': (params) => !params.value,
+      },
       cellStyle: { borderRight: '1px solid #ccc', textAlign: 'center' },
       headerClass: 'bold-header',
     },
     {
       field: 'Description',
       headerName: 'Description',
+      editable: true,
       flex: 2,
       minWidth: 200,
+      cellEditor: 'agTextCellEditor',
+      valueFormatter: (params) =>
+        params.value ? params.value : 'Enter Description',
+      cellClassRules: {
+        'hint-text': (params) => !params.value,
+      },
       cellStyle: { borderRight: '1px solid #ccc' },
       headerClass: 'bold-header',
     },
@@ -75,7 +90,7 @@ export class ServiceProvidersTypesComponent implements OnInit {
   };
 
   constructor(private spSvc: ServiceProviderTypesService,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService, private store: Store,) { }
 
   ngOnInit(): void {
     this.spSvc.getAll().subscribe((data) => (this.rows = data));
@@ -110,5 +125,56 @@ export class ServiceProvidersTypesComponent implements OnInit {
       // }
     });
   }
+
+  addRow(): void {
+    const newRow: ServiceProviderTypes = {
+      ServiceProviderId: 0,
+      ServiceProvideCode: '',
+      Description: '',
+      IsActive: true,
+      IsDeleted: false,
+    };
+
+    // Push to `rows` and trigger Angular change detection
+    this.rows = [newRow, ...this.rows];
+
+    // Let Angular render the new row, then start editing
+    setTimeout(() => {
+      if (this.gridApi) {
+        this.gridApi.startEditingCell({
+          rowIndex: 0,
+          colKey: 'ServiceProvideCode',
+        });
+      }
+    }, 50);
+  }
+
+  getContextMenuItems: GetContextMenuItems = (
+    params: GetContextMenuItemsParams
+  ) => {
+    const addRow = {
+      name: 'Add Row',
+      action: () => this.addRow(),
+      icon: '<i class="fas fa-plus"></i>',
+    };
+
+    const deleteRow = {
+      name: 'Delete Row',
+      action: () => {
+        if (params.node) {
+          this.softDelete(params.node.data);
+        }
+      },
+      icon: '<i class="fas fa-trash"></i>',
+    };
+
+    return [addRow, deleteRow, 'separator', 'copy', 'export'];
+  };
+
+  getRowClass = (params: any): string => {
+    const row = params.data;
+    if (row?.IsDeleted) return 'row-deleted';
+    return '';
+  };
 
 }

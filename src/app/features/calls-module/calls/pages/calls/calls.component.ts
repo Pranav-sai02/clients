@@ -170,4 +170,5 @@ export class CallsComponent implements OnInit {
   onGridSizeChanged(event: any): void {
     this.onFitColumns();
   }
+  
 }

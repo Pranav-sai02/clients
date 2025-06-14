@@ -3,10 +3,13 @@
 /* wrapper stretches to entire viewport minus any fixed header/footer you have */
 .ag-theme-alpine {
   width: 100%;
-  height: calc(100vh - 3.5rem); /* 3.5 rem example header height */
-  padding: 0 1rem; /* consistent horizontal breathing room */
+  height: calc(100vh - 3.5rem);
+  /* 3.5 rem example header height */
+  padding: 0 1rem;
+  /* consistent horizontal breathing room */
   box-sizing: border-box;
 }
+
 .ag-grid-responsive {
   width: 100% !important;
   box-sizing: border-box;
@@ -25,5 +28,11 @@
 
 /* subtle row separators */
 .ag-center-cols-container .ag-row {
-  border-bottom: 1px solid #e5e7eb; /* Tailwind gray‑200 */
+  border-bottom: 1px solid #e5e7eb;
+  /* Tailwind gray‑200 */
+}
+
+
+::ng-deep .row-deleted {
+  background-color: #ffdddd;
 }
